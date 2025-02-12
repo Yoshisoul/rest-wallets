@@ -70,7 +70,7 @@ func (r *TransactionPostgres) GetAll() ([]models.Transaction, error) {
 
 func (r *TransactionPostgres) GetById(transactionId uuid.UUID) (models.Transaction, error) {
 	var transaction models.Transaction
-	query := fmt.Sprintf("SELECT * FROM %s WHERE transaction_id=$1", transactionTable)
+	query := fmt.Sprintf("SELECT * FROM %s WHERE transaction_id = $1", transactionTable)
 	err := r.db.Get(&transaction, query, transactionId)
 
 	return transaction, err
