@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"database/sql"
+	"errors"
 	"net/http"
 
 	"github.com/Yoshisoul/rest-wallets/pkg/models"
@@ -36,6 +38,10 @@ func (h *Handler) signIn(c *gin.Context) {
 
 	token, err := h.services.Authorization.GenerateToken(input.Username, input.Password)
 	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			newErrorResponse(c, http.StatusNotFound, "invalid username or password")
+			return
+		}
 		newErrorResponse(c, http.StatusInternalServerError, "service failure")
 		return
 	}

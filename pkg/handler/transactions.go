@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"database/sql"
+	"errors"
 	"net/http"
 
 	"github.com/Yoshisoul/rest-wallets/pkg/models"
@@ -51,7 +53,7 @@ func (h *Handler) getTransactionById(c *gin.Context) {
 
 	transaction, err := h.services.Transaction.GetById(id)
 	if err != nil {
-		if err.Error() == "sql: no rows in result set" {
+		if errors.Is(err, sql.ErrNoRows) {
 			newErrorResponse(c, http.StatusNotFound, "transaction not found")
 			return
 		}

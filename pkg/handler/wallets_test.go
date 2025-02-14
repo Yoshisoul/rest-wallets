@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"database/sql"
 	"errors"
 	"net/http/httptest"
 	"strconv"
@@ -248,7 +249,7 @@ func TestHandler_getWalletById(t *testing.T) {
 			inputUserId:   1,
 			inputWalletId: "123e4567-e89b-12d3-a456-426614174123",
 			mockBehavior: func(s *mockService.MockWallet, userId int, walletId uuid.UUID) {
-				s.EXPECT().GetByIdFromUser(userId, walletId).Return(models.Wallet{}, errors.New("sql: no rows in result set"))
+				s.EXPECT().GetByIdFromUser(userId, walletId).Return(models.Wallet{}, sql.ErrNoRows)
 			},
 			expectedStatusCode:  404,
 			expectedRequestBody: `{"message":"wallet not found"}`,

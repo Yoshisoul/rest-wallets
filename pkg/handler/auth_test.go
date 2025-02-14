@@ -2,6 +2,7 @@ package handler
 
 import (
 	"bytes"
+	"database/sql"
 	"errors"
 	"net/http"
 	"net/http/httptest"
@@ -137,6 +138,19 @@ func TestHandler_signIn(t *testing.T) {
 			},
 			expectedStatusCode:  500,
 			expectedRequestBody: `{"message":"service failure"}`,
+		},
+		{
+			testName:  "Invalid username or password",
+			inputBody: `{"username":"invalid", "password": "invalid"}`,
+			mockExpInput: models.SignInInput{
+				Username: "invalid",
+				Password: "invalid",
+			},
+			mockBehavior: func(s *mockService.MockAuthorization, user models.SignInInput) {
+				s.EXPECT().GenerateToken(user.Username, user.Password).Return("", sql.ErrNoRows)
+			},
+			expectedStatusCode:  404,
+			expectedRequestBody: `{"message":"invalid username or password"}`,
 		},
 	}
 

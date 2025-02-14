@@ -2,6 +2,7 @@ package handler
 
 import (
 	"bytes"
+	"database/sql"
 	"errors"
 	"net/http/httptest"
 	"testing"
@@ -240,10 +241,10 @@ func TestHandler_getTransactionById(t *testing.T) {
 			expectedRequestBody: `{"message":"invalid id param"}`,
 		},
 		{
-			name:    "Not find",
+			name:    "Not found",
 			inputId: "111e2222-e89b-12d3-a456-426614174000",
 			mockBehavior: func(s *mockService.MockTransaction, id uuid.UUID) {
-				s.EXPECT().GetById(id).Return(models.Transaction{}, errors.New("sql: no rows in result set"))
+				s.EXPECT().GetById(id).Return(models.Transaction{}, sql.ErrNoRows)
 			},
 			expectedStatusCode:  404,
 			expectedRequestBody: `{"message":"transaction not found"}`,
