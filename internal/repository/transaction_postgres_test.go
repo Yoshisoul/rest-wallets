@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	sqlmock "github.com/zhashkevych/go-sqlxmock"

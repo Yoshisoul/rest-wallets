@@ -5,7 +5,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )

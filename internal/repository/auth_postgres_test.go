@@ -3,7 +3,7 @@ package repository
 import (
 	"testing"
 
-	models "github.com/Yoshisoul/rest-wallets/pkg/models"
+	models "github.com/Yoshisoul/rest-wallets/internal/models"
 	"github.com/stretchr/testify/assert"
 	sqlmock "github.com/zhashkevych/go-sqlxmock"
 )

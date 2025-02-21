@@ -3,7 +3,7 @@ package repository
 import (
 	"fmt"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
 	"github.com/jmoiron/sqlx"
 )
 

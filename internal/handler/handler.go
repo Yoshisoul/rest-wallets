@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/Yoshisoul/rest-wallets/pkg/service"
+	"github.com/Yoshisoul/rest-wallets/internal/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -33,7 +33,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			// updates using transactions
 		}
 
-		transcactions := api.Group("/wallet")
+		transcactions := api.Group("/transactions")
 		{
 			transcactions.POST("/", h.createTransaction)
 			transcactions.GET("/", h.getAllTransactions)

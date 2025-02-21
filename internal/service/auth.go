@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
-	"github.com/Yoshisoul/rest-wallets/pkg/repository"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
+	"github.com/Yoshisoul/rest-wallets/internal/repository"
 	"github.com/dgrijalva/jwt-go"
 )
 

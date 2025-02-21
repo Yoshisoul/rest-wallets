@@ -6,8 +6,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/service"
-	mockService "github.com/Yoshisoul/rest-wallets/pkg/service/mocks"
+	"github.com/Yoshisoul/rest-wallets/internal/service"
+	mockService "github.com/Yoshisoul/rest-wallets/internal/service/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"

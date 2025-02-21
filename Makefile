@@ -4,7 +4,10 @@ export $(shell sed 's/=.*//' config.env)
 build:
 	docker-compose build rest-wallets
 
-run:
+stop:
+	docker-compose down
+
+run: stop
 	docker-compose up rest-wallets
 
 migration-create:

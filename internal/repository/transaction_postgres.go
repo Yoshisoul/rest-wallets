@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 )

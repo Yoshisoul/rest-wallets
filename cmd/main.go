@@ -7,9 +7,9 @@ import (
 	"syscall"
 
 	wallets "github.com/Yoshisoul/rest-wallets"
-	"github.com/Yoshisoul/rest-wallets/pkg/handler"
-	"github.com/Yoshisoul/rest-wallets/pkg/repository"
-	"github.com/Yoshisoul/rest-wallets/pkg/service"
+	"github.com/Yoshisoul/rest-wallets/internal/handler"
+	"github.com/Yoshisoul/rest-wallets/internal/repository"
+	"github.com/Yoshisoul/rest-wallets/internal/service"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"

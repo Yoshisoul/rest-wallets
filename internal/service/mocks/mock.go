@@ -12,7 +12,7 @@ package mock_service
 import (
 	reflect "reflect"
 
-	models "github.com/Yoshisoul/rest-wallets/pkg/models"
+	models "github.com/Yoshisoul/rest-wallets/internal/models"
 	uuid "github.com/google/uuid"
 	gomock "go.uber.org/mock/gomock"
 )

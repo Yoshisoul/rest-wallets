@@ -1,23 +1,21 @@
-package service
+package repository
 
 import (
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
-	"github.com/Yoshisoul/rest-wallets/pkg/repository"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
 	"github.com/google/uuid"
+	"github.com/jmoiron/sqlx"
 )
-
-//go:generate mockgen -source=service.go -destination=mocks/mock.go
 
 type Authorization interface {
 	CreateUser(user models.SignUpInput) (int, error)
-	GenerateToken(username, password string) (string, error)
-	ParseToken(token string) (int, error)
+	GetUser(username, password string) (models.User, error)
 }
 
 type Wallet interface {
 	Create(userId int) (uuid.UUID, error)
 	GetAllFromUser(userId int) ([]models.Wallet, error)
 	GetByIdFromUser(userId int, walletId uuid.UUID) (models.Wallet, error)
+	GetById(walletId uuid.UUID) (models.Wallet, error)
 	Delete(userId int, walletId uuid.UUID) error
 }
 
@@ -27,16 +25,16 @@ type Transaction interface {
 	GetById(transactionId uuid.UUID) (models.Transaction, error)
 }
 
-type Service struct {
+type Repository struct {
 	Authorization
 	Wallet
 	Transaction
 }
 
-func NewService(repos *repository.Repository) *Service {
-	return &Service{
-		Authorization: NewAuthService(repos.Authorization),
-		Wallet:        NewWalletService(repos.Wallet),
-		Transaction:   NewTransactionService(repos.Transaction, repos.Wallet),
+func NewRepository(db *sqlx.DB) *Repository {
+	return &Repository{
+		Authorization: NewAuthPostgres(db),
+		Wallet:        NewWalletPostgres(db),
+		Transaction:   NewTransactionPostgres(db),
 	}
 }

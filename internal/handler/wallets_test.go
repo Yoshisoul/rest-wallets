@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Yoshisoul/rest-wallets/pkg/models"
-	"github.com/Yoshisoul/rest-wallets/pkg/service"
-	mockService "github.com/Yoshisoul/rest-wallets/pkg/service/mocks"
+	"github.com/Yoshisoul/rest-wallets/internal/models"
+	"github.com/Yoshisoul/rest-wallets/internal/service"
+	mockService "github.com/Yoshisoul/rest-wallets/internal/service/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
